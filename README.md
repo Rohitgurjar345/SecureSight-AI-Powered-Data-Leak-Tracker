@@ -46,7 +46,7 @@ SecureSight solves this by utilizing an **intelligent rule-based scoring system*
 ## 📸 Application Screenshots
 ### 🏠 Home Page
 <p align="center">
-  <img src="./assets/home-page.png" width="80%" />
+  <img src="./assets/home page.png" width="80%" />
 </p>
 
 ### 📊 Dashboard
@@ -56,7 +56,7 @@ SecureSight solves this by utilizing an **intelligent rule-based scoring system*
 
 ### 🔐 Password Generator
 <p align="center">
-  <img src="./assets/password-generator.png" width="80%" />
+  <img src="./assets/password generator.png" width="80%" />
 </p>
 ---
 
