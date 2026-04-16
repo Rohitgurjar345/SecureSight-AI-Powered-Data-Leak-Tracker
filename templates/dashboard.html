@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-page flex-row gap-20">
+    
+    <!-- Left Column: Checkers -->
+    <div class="scanners-column flex-col flex-1 gap-20">
+        
+        <div class="controls-ribbon card" style="display:flex; justify-content:space-between; align-items:center; padding: 15px 25px; margin-bottom:0;">
+            <div class="toggle-group">
+                <label class="switch">
+                  <input type="checkbox" id="privacyToggle">
+                  <span class="slider round"></span>
+                </label>
+                <span id="privacyLabelText">Privacy Mode: OFF</span>
+            </div>
+            
+            <button type="button" id="demoModeBtn" class="btn outline-btn btn-sm">Try Demo Data</button>
+        </div>
+
+        <!-- Block 1: Email Breach Checker -->
+        <div class="card scan-card" style="margin-bottom:0;">
+            <h3><i class="fa-solid fa-envelope"></i> Email Breach Checker</h3>
+            <form id="emailScanForm" class="scan-form">
+                <div class="form-group">
+                    <input type="email" id="email" required placeholder="Enter email address">
+                </div>
+                <button type="submit" class="btn primary-btn btn-sm">Check Breach</button>
+            </form>
+            <div id="emailResultBlock" class="result-block mt-20 hidden">
+                <hr>
+                <div id="emailOutput" class="mt-10"></div>
+            </div>
+        </div>
+
+        <!-- Block 2: Password Security Checker -->
+        <div class="card scan-card" style="margin-bottom:0;">
+            <h3><i class="fa-solid fa-key"></i> Password Security Checker</h3>
+            <form id="passwordScanForm" class="scan-form">
+                <div class="form-group relative-box">
+                    <input type="password" id="password" required placeholder="Enter password to test" style="padding-right: 40px;">
+                    <i class="fa-solid fa-eye text-muted" id="togglePassword" style="position: absolute; right: 15px; top: 15px; cursor: pointer; transition: 0.3s; z-index: 10;"></i>
+                </div>
+                <button type="submit" class="btn primary-btn btn-sm">Analyze Password</button>
+            </form>
+            <div id="passwordResultBlock" class="result-block mt-20 hidden">
+                <hr>
+                <div class="pwd-meter-container">
+                    <div class="pwd-meter-bar" id="pwdMeterBar"></div>
+                </div>
+                <div id="passwordOutput" class="mt-10"></div>
+                <div id="inlinePasswordAdvice" class="recommendation-card mt-10 hidden" style="font-size: 0.85rem; padding: 10px;"></div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Right Column: Risk Summary -->
+    <div class="summary-column card flex-col flex-third" style="margin-bottom:0;">
+        <h3><i class="fa-solid fa-chart-pie"></i> Risk Summary</h3>
+        
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="spinner text-center"></div>
+        </div>
+        
+        <div id="summaryBlock" class="hidden">
+            <h1 id="riskScoreValue" class="text-center risk-display">Low</h1>
+            <p class="text-center text-muted">Unified Risk Score</p>
+            
+            <div class="recommendation-cards mt-20">
+                <div class="recommendation-card" id="dynamicAdviceEmail"></div>
+                <div class="recommendation-card mt-10" id="dynamicAdvicePassword"></div>
+            </div>
+        </div>
+        
+        <div id="summaryPlaceholder" class="text-center text-muted" style="margin: auto; padding: 40px 0;">
+            <i class="fa-solid fa-shield-halved" style="font-size: 3rem; opacity:0.2;"></i>
+            <p class="mt-10">Run a scan to generate <br>your security profile.</p>
+        </div>
+        
+    </div>
+
+</div>
+{% endblock %}

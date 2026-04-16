@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="landing-page">
+    
+    <!-- Hero Section -->
+    <section class="hero-section text-center relative-box glow-container" style="padding: 100px 20px; border-bottom: 1px solid var(--border-card);">
+        <div class="bg-gradient-sphere pulse-slow"></div>
+        <div class="relative-box z-index-1">
+            <h1 class="hero-title neon-text" style="font-size: 4rem; margin-bottom: 20px; letter-spacing: -1px;">
+                Know Your Digital Risk <br><span style="color:var(--accent-blue);">Before It's Too Late</span>
+            </h1>
+            <p class="hero-subtitle text-muted" style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.8;">
+                AI-powered insights into your data exposure. Instantly evaluate if your identity has been compromised by global breaches.
+            </p>
+            
+            <div class="flex-row gap-20" style="justify-content: center; flex-wrap: wrap;">
+                <a href="{{ url_for('dashboard') }}" class="btn primary-btn btn-lg animate-pulse" style="min-width: 220px; font-weight: 700;">
+                    Start Security Check <i class="fa-solid fa-radar icon-spin-hover"></i>
+                </a>
+                <a href="{{ url_for('dashboard') }}?demo=true" class="btn outline-btn btn-lg glow-border" style="min-width: 180px;">
+                    Try Demo <i class="fa-solid fa-flask"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" style="padding: 80px 20px;">
+        <h2 class="section-title text-center neon-text mb-40">Core Intelligence Features</h2>
+        <div class="scanners-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            
+            <div class="feature-card neon-card text-center relative-box hover-lift">
+                <div class="icon-bubble glow-text" style="background: rgba(16, 185, 129, 0.1); color: var(--color-green);"><i class="fa-solid fa-envelope"></i></div>
+                <h3 class="mb-10 text-main">Email Breach Detection</h3>
+                <p class="text-sm text-muted">Check if your email is exposed in known digital breaches across the deep web.</p>
+            </div>
+            
+            <div class="feature-card neon-card text-center relative-box hover-lift">
+                <div class="icon-bubble glow-text" style="background: rgba(245, 158, 11, 0.1); color: var(--color-yellow);"><i class="fa-solid fa-key"></i></div>
+                <h3 class="mb-10 text-main">Password Leak Detection</h3>
+                <p class="text-sm text-muted">Securely verify if your password has been mathematically compromised in known hashes.</p>
+            </div>
+            
+            <div class="feature-card neon-card text-center relative-box hover-lift">
+                <div class="icon-bubble glow-text" style="background: rgba(239, 68, 68, 0.1); color: var(--color-red);"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3 class="mb-10 text-main">Intelligent Risk Scoring</h3>
+                <p class="text-sm text-muted">Get a clear, automated risk level (Low / Medium / High) based on vulnerability weighting.</p>
+            </div>
+            
+            <div class="feature-card neon-card text-center relative-box hover-lift">
+                <div class="icon-bubble glow-text bg-blue text-blue"><i class="fa-solid fa-lightbulb"></i></div>
+                <h3 class="mb-10 text-main">Smart Recommendations</h3>
+                <p class="text-sm text-muted">Personalized, real-time advice to immediately improve your security posture.</p>
+            </div>
+            
+            <div class="feature-card neon-card text-center relative-box hover-lift">
+                <div class="icon-bubble glow-text" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6;"><i class="fa-solid fa-user-secret"></i></div>
+                <h3 class="mb-10 text-main">Privacy Mode</h3>
+                <p class="text-sm text-muted">Protect your data by disabling all storage. Zero persistence, maximum privacy.</p>
+            </div>
+            
+            <div class="feature-card neon-card text-center relative-box hover-lift">
+                <div class="icon-bubble glow-text" style="background: rgba(2ec4b6, 0.1); color: #2EC4B6;"><i class="fa-solid fa-flask"></i></div>
+                <h3 class="mb-10 text-main">Demo Mode</h3>
+                <p class="text-sm text-muted">Test the system capabilities securely with pre-configured mock data injections.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- About & Platform Overview -->
+    <section class="about-section" style="padding: 60px 20px; background: rgba(0,0,0,0.3); border-top:1px solid var(--border-card); border-bottom:1px solid var(--border-card);">
+        <div class="flex-col gap-20" style="max-width: 900px; margin: 0 auto;">
+            
+            <div class="glass-card flex-row gap-20" style="align-items:center;">
+                <div class="icon-bubble flex-none text-main" style="flex: 0 0 60px; font-size:2rem;"><i class="fa-solid fa-shield-halved glow-text"></i></div>
+                <div>
+                    <h3 class="text-main mb-10">Project Overview</h3>
+                    <p class="text-muted text-sm">SecureSight is an AI-powered cybersecurity tool that helps users check if their personal data has been exposed and understand their risk level through actionable intelligence.</p>
+                </div>
+            </div>
+            
+            <div class="glass-card flex-row gap-20" style="align-items:center;">
+                <div class="icon-bubble flex-none text-High" style="flex: 0 0 60px; font-size:2rem;"><i class="fa-solid fa-triangle-exclamation glow-text"></i></div>
+                <div>
+                    <h3 class="text-main mb-10">The Problem</h3>
+                    <p class="text-muted text-sm">Data breaches are constantly increasing. Users often don't understand their risk profile, and standard tools only show raw data dumps without providing analytical insights.</p>
+                </div>
+            </div>
+            
+            <div class="glass-card flex-row gap-20" style="align-items:center;">
+                <div class="icon-bubble flex-none text-Low" style="flex: 0 0 60px; font-size:2rem;"><i class="fa-solid fa-check-double glow-text"></i></div>
+                <div>
+                    <h3 class="text-main mb-10">Our Solution</h3>
+                    <p class="text-muted text-sm">Targeted email breach detection combined with cryptographically secure password leak checking, culminating in a robust risk score and actionable mitigation recommendations.</p>
+                </div>
+            </div>
+
+            <div class="glass-card text-center mt-20 p-30">
+                <h3 class="text-main mb-20 neon-text">How It Works</h3>
+                <div class="steps-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    <div class="step">
+                        <div class="step-num shadow-glow">1</div>
+                        <h4 class="text-main">Input</h4>
+                        <p class="text-sm text-muted">Enter credentials</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-muted step-arrow" style="margin-top:20px;"></i>
+                    <div class="step">
+                        <div class="step-num shadow-glow">2</div>
+                        <h4 class="text-main">Analyze</h4>
+                        <p class="text-sm text-muted">System queries data</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-muted step-arrow" style="margin-top:20px;"></i>
+                    <div class="step">
+                        <div class="step-num shadow-glow">3</div>
+                        <h4 class="text-main">Calculate</h4>
+                        <p class="text-sm text-muted">Risk model processes</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-muted step-arrow" style="margin-top:20px;"></i>
+                    <div class="step">
+                        <div class="step-num shadow-glow">4</div>
+                        <h4 class="text-main">Results</h4>
+                        <p class="text-sm text-muted">Dashboard insights</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Tech Stack & Future -->
+    <section class="bottom-info-section" style="padding: 80px 20px;">
+        <div class="flex-row gap-20" style="flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
+            
+            <div class="glass-card flex-1">
+                <h3 class="neon-text mb-20" style="border-bottom: 1px solid var(--border-card); padding-bottom: 10px;"><i class="fa-solid fa-microchip"></i> Tech Stack</h3>
+                <ul class="text-muted" style="list-style-type: none;">
+                    <li class="mb-10"><i class="fa-brands fa-html5 text-Medium"></i> <strong>Frontend:</strong> HTML5, CSS3 Glassmorphism, Vanilla JS</li>
+                    <li class="mb-10"><i class="fa-brands fa-python text-blue"></i> <strong>Backend:</strong> Python 3, Flask Framework</li>
+                    <li class="mb-10"><i class="fa-solid fa-database text-Low"></i> <strong>Database:</strong> SQLite local instance</li>
+                    <li class="mb-10"><i class="fa-solid fa-shield-halved text-High"></i> <strong>Security:</strong> SHA-1 Hashing, k-Anonymity API constraints</li>
+                </ul>
+            </div>
+            
+            <div class="glass-card flex-1">
+                <h3 class="neon-text mb-20" style="border-bottom: 1px solid var(--border-card); padding-bottom: 10px;"><i class="fa-solid fa-rocket"></i> Future Enhancements</h3>
+                <ul class="text-muted" style="list-style-type: none;">
+                    <li class="mb-10"><i class="fa-solid fa-plug text-accent"></i> Real Commercial API integrations (HIBP Pro)</li>
+                    <li class="mb-10"><i class="fa-solid fa-users text-accent"></i> User Authentication & SSO accounts</li>
+                    <li class="mb-10"><i class="fa-solid fa-bell text-accent"></i> Dynamic Push / Email Alerts upon new breaches</li>
+                    <li class="mb-10"><i class="fa-solid fa-brain text-accent"></i> Advanced ML models for predictive credential stuffing</li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+</div>
+{% endblock %}

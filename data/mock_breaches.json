@@ -1,0 +1,43 @@
+{
+  "alice@example.com": [
+    {
+      "name": "LinkedIn",
+      "data_types_leaked": ["email", "password"],
+      "breach_year": 2012
+    },
+    {
+      "name": "Adobe",
+      "data_types_leaked": ["email", "password", "password hints", "username"],
+      "breach_year": 2013
+    },
+    {
+      "name": "Canva",
+      "data_types_leaked": ["email", "name", "passwords", "location"],
+      "breach_year": 2019
+    },
+    {
+      "name": "MyFitnessPal",
+      "data_types_leaked": ["email", "passwords", "IP addresses"],
+      "breach_year": 2018
+    }
+  ],
+  "bob@example.com": [
+    {
+      "name": "Canva",
+      "data_types_leaked": ["email", "name", "passwords", "location"],
+      "breach_year": 2019
+    }
+  ],
+  "charlie@example.com": [
+    {
+      "name": "Equifax",
+      "data_types_leaked": ["email", "SSN", "credit cards", "date of birth", "phone numbers"],
+      "breach_year": 2017
+    },
+    {
+      "name": "Yahoo",
+      "data_types_leaked": ["email", "passwords", "security questions", "names"],
+      "breach_year": 2013
+    }
+  ]
+}

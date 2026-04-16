@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureSight | AI-Powered Data Leak Tracker</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Consistent Navigation Bar -->
+        <header class="top-nav">
+            <div class="logo">
+                <a href="{{ url_for('landing') }}">
+                    <i class="fa-solid fa-shield-halved"></i> 
+                    <span>SecureSight</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">Dashboard</a>
+                <a href="{{ url_for('generator') }}" class="{% if request.endpoint == 'generator' %}active{% endif %}">Generator</a>
+                <a href="{{ url_for('history_page') }}" class="{% if request.endpoint == 'history_page' %}active{% endif %}">History</a>
+            </div>
+        </header>
+        
+        <main class="content">
+            {% if request.endpoint != 'landing' %}
+            <div style="margin-bottom: 20px;">
+                <a href="{{ url_for('landing') }}" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+            {% endif %}
+            
+            {% block content %}{% endblock %}
+        </main>
+        
+        <footer class="bottom-footer">
+            <p>&copy; 2026 SecureSight. Empowering Cyber Intelligence.</p>
+        </footer>
+    </div>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

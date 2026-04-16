@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="page-header">
+        <h1>Dashboard</h1>
+        <p>Check individual data points or generate secure credentials.</p>
+    </div>
+
+    <!-- Scanners Grid -->
+    <div class="scanners-grid">
+        <!-- Email Scanner -->
+        <div class="card scan-card">
+            <h3><i class="fa-solid fa-envelope"></i> Email Breach Scanner</h3>
+            <p class="text-sm hint">Check if your email appears in known data leaks.</p>
+            <form id="emailScanForm" class="scan-form">
+                <div class="form-group">
+                    <input type="email" id="email" required placeholder="name@example.com">
+                </div>
+                <button type="submit" class="btn primary-btn btn-sm">Scan Email</button>
+            </form>
+        </div>
+
+        <!-- Password Scanner -->
+        <div class="card scan-card">
+            <h3><i class="fa-solid fa-key"></i> Password Pwned Scanner</h3>
+            <p class="text-sm hint">Check if your password has been compromised.</p>
+            <form id="passwordScanForm" class="scan-form">
+                <div class="form-group">
+                    <input type="password" id="password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn primary-btn btn-sm">Scan Password</button>
+            </form>
+        </div>
+
+        <!-- Password Generator -->
+        <div class="card scan-card generator-card">
+            <h3><i class="fa-solid fa-shield-halved"></i> Secure Password Generator</h3>
+            <p class="text-sm hint">Generate a random, strong password.</p>
+            <div class="form-group">
+                <div class="pwd-display-box">
+                    <input type="text" id="genPwdDisplay" readonly placeholder="Click generate...">
+                    <button type="button" id="copyPwdBtn" class="btn outline-btn btn-icon" title="Copy"><i class="fa-solid fa-copy"></i></button>
+                </div>
+                
+                <div class="gen-controls">
+                    <label>Length: <span id="genLengthVal">16</span></label>
+                    <input type="range" id="genLength" min="8" max="32" value="16">
+                </div>
+            </div>
+            <button type="button" id="generatePwdBtn" class="btn primary-btn btn-sm" style="background:var(--color-green);">Generate Strong Password</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Analyzing intelligence database...</p>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="results-section hidden">
+        <div class="risk-summary card" id="riskSummary">
+            <h2 id="riskTitle">Threat Profile: <span id="riskBadge" class="badge">Calculating...</span></h2>
+        </div>
+        
+        <div class="results-grid" id="resultsGrid">
+            <!-- Email Results -->
+            <div class="result-card card hidden" id="emailResultCard">
+                <h3><i class="fa-solid fa-at"></i> Email Exposure</h3>
+                <div class="metric-container" id="emailStatus"></div>
+            </div>
+            
+            <!-- Password Results -->
+            <div class="result-card card hidden" id="passwordResultCard">
+                <h3><i class="fa-solid fa-lock"></i> Password Intelligence</h3>
+                <div class="metric-container" id="passwordStatus"></div>
+            </div>
+        </div>
+        
+        <div class="recommendations card" id="recommendationsCard">
+            <h3><i class="fa-solid fa-lightbulb"></i> AI Recommendations</h3>
+            <ul id="recommendationsList" class="recommendations-list">
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

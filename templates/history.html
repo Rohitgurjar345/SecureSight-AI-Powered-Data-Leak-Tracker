@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="history-page">
+    <div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-end;">
+        <div>
+            <h1><i class="fa-solid fa-clock-rotate-left"></i> Threat History</h1>
+            <p>Review the history of your digital identity queries.</p>
+        </div>
+        <button onclick="clearHistory()" class="btn primary-btn btn-sm bg-High hover-bg-High-dark" style="background: var(--color-red); max-width:180px;"><i class="fa-solid fa-trash"></i> Clear History</button>
+    </div>
+    
+    <div class="card">
+        <div class="history-header" style="margin-bottom: 20px;">
+            <div class="filters flex-row gap-10">
+                <select id="riskFilter" class="filter-select" onchange="filterHistory()">
+                    <option value="all">All Risks</option>
+                    <option value="Low">Low Risk</option>
+                    <option value="Medium">Medium Risk</option>
+                    <option value="High">High Risk</option>
+                </select>
+                <button onclick="fetchHistory()" class="btn outline-btn btn-sm"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
+            </div>
+        </div>
+        <div class="history-table-container">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Target Identity</th>
+                        <th>Risk Assessment</th>
+                        <th>Exposures Found</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Loading history...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    let rawHistoryData = [];
+    
+    document.addEventListener('DOMContentLoaded', fetchHistory);
+
+    async function fetchHistory() {
+        try {
+            const response = await fetch('/api/history');
+            rawHistoryData = await response.json();
+            filterHistory();
+        } catch(err) {
+            console.error("Failed to fetch history");
+            document.getElementById('historyBody').innerHTML = `<tr><td colspan="4" style="text-align: center; color:var(--color-red);">Error loading history.</td></tr>`;
+        }
+    }
+    
+    function filterHistory() {
+        const filterVal = document.getElementById('riskFilter').value;
+        const tbody = document.getElementById('historyBody');
+        tbody.innerHTML = '';
+        
+        let displayData = rawHistoryData;
+        if(filterVal !== 'all') {
+            displayData = rawHistoryData.filter(r => r.unified_risk_score === filterVal);
+        }
+        
+        if (displayData.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color:var(--text-muted);">No history found.</td></tr>`;
+            return;
+        }
+        
+        displayData.forEach(row => {
+            const tr = document.createElement('tr');
+            const badgeClass = `bg-${row.unified_risk_score}`;
+            tr.innerHTML = `
+                <td style="color:var(--text-muted); font-size:0.9rem;">${row.timestamp}</td>
+                <td style="font-family:monospace; font-size:1rem;">${row.query_term}</td>
+                <td><span class="badge ${badgeClass}">${row.unified_risk_score}</span></td>
+                <td>${row.breach_count} Hits</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    async function clearHistory() {
+        if(!confirm("Are you sure you want to clear your entire search history?")) return;
+        
+        try {
+            await fetch('/api/clear-history', { method: 'POST' });
+            fetchHistory();
+        } catch(e) {
+            alert('Failed to clear history.');
+        }
+    }
+</script>
+{% endblock %}
