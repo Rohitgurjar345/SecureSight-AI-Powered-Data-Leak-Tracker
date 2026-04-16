@@ -44,11 +44,20 @@ SecureSight solves this by utilizing an **intelligent rule-based scoring system*
 ---
 
 ## 📸 Application Screenshots
+### 🏠 Home Page
+<p align="center">
+  <img src="./assets/home-page.png" width="80%" />
+</p>
 
-![Home](./static/assets/home%20page.png)
-![Dashboard](./static/assets/dashboard.png)
-![Password Generator](./static/assets/password%20generator.png)
+### 📊 Dashboard
+<p align="center">
+  <img src="./assets/dashboard.png" width="80%" />
+</p>
 
+### 🔐 Password Generator
+<p align="center">
+  <img src="./assets/password-generator.png" width="80%" />
+</p>
 ---
 
 ## ⚙️ How It Works
@@ -68,13 +77,60 @@ The application is built on a modular Full-Stack MTV (Model-Template-View) desig
 
 User Input → Frontend (JS) → Flask API → Processing Modules (`breach_checker.py`, `password_checker.py`, `risk_model.py`) → Database Log → Output Render
 
+
+
 ---
 
 ## 🗺️ Architecture Diagram
 
-![Architecture](./assets/architecture.png)
-
----
+┌─────────────────────────────────────────────────────────────────────┐
+│                         CLIENT BROWSER                              │
+│                                                                     │
+│   ┌───────────────┐   ┌────────────────┐   ┌──────────────────┐     │
+│   │  HTML5/Jinja2 │   │ Vanilla JS ES6 │   │  CSS3 Glassmor-  │     │
+│   │  Templates    │   │  Fetch API /   │   │  phism + Neon UI │     │
+│   │               │   │  DOM Manip.    │   │                  │     │
+│   └──────┬────────┘   └───────┬────────┘   └──────────────────┘     │
+│          │                    │ JSON POST /api/scan                 │
+└──────────┼────────────────────┼─────────────────────────────────────┘
+           │                    │
+           ▼                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                        FLASK BACKEND                                │
+│                                                                     │
+│   ┌──────────────────────────────────────────────────────────────┐  │
+│   │                        app.py (Router)                       │  │
+│   │   /            /dashboard     /history     /api/scan (POST)  │  │
+│   └──────┬──────────────┬──────────────┬───────────────┬─────────┘  │
+│          │              │              │               │            │
+│          ▼              ▼              ▼               ▼            │
+│   ┌────────────┐ ┌─────────────┐ ┌─────────┐ ┌────────────────── ┐  │
+│   │ index.html │ │dashboard    │ │history  │ │  breach_checker   │  │
+│   │ (Landing)  │ │.html (Main) │ │.html    │ │  .py              │  |
+│   └────────────┘ └─────────────┘ └─────────┘ └──────── ┬─────────┘  │
+│                                                        │            │
+│   ┌──────────────────────────────────────────────────┐ │            │
+│   │                  utils/                          │ │            │
+│   │  ┌──────────────┐  ┌──────────────┐  ┌────────┐  │ │            │
+│   │  │password_     │  │ risk_model   │  │ db.py  │◄ ┘ │            │
+│   │  │checker.py    │  │ .py          │  │        │    │            │
+│   │  │(k-Anonymity) │  │(Score Engine)│  │(SQLite)│    │            │
+│   │  └──────┬───────┘  └──────┬───────┘  └───┬────┘    │            │
+│   └─────────┼─────────────────┼──────────────┼─────────┘            │
+│             │                 │              │                      │
+└─────────────┼─────────────────┼──────────────┼──────────────────────┘
+              │                 │              │
+              ▼                 │              ▼
+┌─────────────────────┐         │    ┌──────────────────────┐
+│  HIBP EXTERNAL API  │         │    │   SQLite Database    │
+│  api.pwnedpasswords │         │    │   securesight.db     │
+│  .com/range/{prefix}│         │    │   (search_history)   │
+└─────────────────────┘         │    └──────────────────────┘
+                                ▼
+                   ┌─────────────────────────┐
+                   │ data/mock_breaches.json │
+                   │ (Threat Intelligence DB)│
+                   └─────────────────────────┘
 
 ## 🔌 API Documentation
 
@@ -204,10 +260,11 @@ Data security is the fundamental architectural pillar of this application.
 
 ## ⭐ Key Highlights
 
-*   **Modular Extensibility:** Built loosely coupled. You can effortlessly detach the mock JSON array and plug it directly into a live OSINT intelligence feed with zero UI restructuring.
-*   **Optimized Asynchronous Frontend:** Designed without heavy third-party frame packages like React, drastically minimizing memory load while providing a flawless real-time Single Page Application experience.
-*   **Cryptographically Sound Methods:** Hardware-driven `window.crypto` password generation.
-
+*   Implements k-Anonymity privacy model
+*   Modular architecture for scalability
+*   Real-world cybersecurity simulation
+*   Interactive UI with modern design
+*   Privacy-first system design
 ---
 
 ## 🥇 What Makes This Project Unique
@@ -218,10 +275,12 @@ Unlike standard password-strength checkers that use basic regular expressions, S
 
 ## 🚀 Future Improvements
 
-*   Connecting `breach_checker.py` directly to deep web live feeds and Auth0 security logs.
-*   Migrating the embedded SQLite3 architecture to a scalable PostgreSQL container on AWS.
-*   Incorporating graphical multi-axis trend charting on the History dashboard page utilizing Chart.js.
+*   Real-time breach API integration
+*   User authentication system
+*   Email alert notifications
+*   Machine learning-based risk prediction
+*   Cloud deployment (AWS / Docker)
 
----
+
 
 
