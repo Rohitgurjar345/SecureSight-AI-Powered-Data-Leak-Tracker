@@ -45,9 +45,9 @@ SecureSight solves this by utilizing an **intelligent rule-based scoring system*
 
 ## 📸 Application Screenshots
 
-![Home](./assets/home.png)
-![Dashboard](./assets/dashboard.png)
-![Password Analyzer](./assets/password_analyzer.png)
+![Home]("C:\Users\rohit\Downloads\127.0.0.1_5000_.png")
+![Dashboard]("C:\Users\rohit\Downloads\127.0.0.1_5000_dashboard.png")
+![Password Generator]("C:\Users\rohit\Downloads\127.0.0.1_5000_generator.png")
 
 ---
 
@@ -127,7 +127,6 @@ SecureSight/
 ├── securesight.db              # SQLite Database
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # Documentation
-├── projectile_EXPLANATION.md   # Deep architectural breakdown
 ├── database/
 │   └── db.py                   # SQLite query routing and tracking models
 ├── utils/
@@ -170,7 +169,7 @@ Data security is the fundamental architectural pillar of this application.
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-link>
+   git clone <https://github.com/Rohitgurjar345/SecureSight-AI-Powered-Data-Leak-Tracker.git>
    cd SecureSight
    ```
 
@@ -225,15 +224,4 @@ Unlike standard password-strength checkers that use basic regular expressions, S
 
 ---
 
-## 👨‍💻 Author
 
-**Rohit** 
-Cybersecurity Enthusiast & Full-Stack Developer
-
-*   [GitHub Profile](https://github.com/Rohitgurjar345)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
