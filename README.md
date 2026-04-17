@@ -14,22 +14,36 @@
 
 ---
 
+##🚀 Live Demo
+
+👉 https://securesight-ai-powered-data-leak-tracker.onrender.com
+
 ## 📖 Overview
 
-**SecureSight** is a premium cybersecurity web application designed to help users identify their digital exposure across the internet. By combining local threat intelligence mapping with secure real-time API integrations, SecureSight delivers a comprehensive risk score and actionable defense recommendations—all without compromising user privacy.
+**SecureSight** is a full-stack cybersecurity web application that helps users analyze their digital exposure by detecting data breaches and evaluating password vulnerabilities.
+
+It combines breach detection, password analysis, and an intelligent rule-based scoring system to generate a unified risk profile with actionable recommendations — all while preserving user privacy.
 
 ---
 
 ## ⚠️ Problem Statement
 
-With data breaches becoming increasingly common, users often remain completely unaware that their sensitive credentials (emails, passwords, SSNs) are exposed on the deep web. Existing tools often either lack context, provide confusing technical data, or compromise privacy by logging the very plain-text passwords they claim to protect.
+* Data breaches are increasing globally
+* Users are often unaware of their exposure
+* Existing tools provide raw data but lack meaningful insights
+* Some tools compromise privacy by logging sensitive information
 
 ---
 
 ## 🎯 Solution
 
-SecureSight solves this by utilizing an **intelligent rule-based scoring system**. It securely checks credentials against known breach repositories without ever transmitting or storing plaintext user data. It then contextualizes the threat, calculating a clear Low, Medium, or High risk score backed by human-readable security recommendations.
+SecureSight solves these issues by:
 
+* Performing secure breach checks using simulated datasets
+* Using the k-Anonymity model for password leak detection
+* Generating a clear Low / Medium / High risk score
+* Providing context-aware recommendations
+* Ensuring zero plaintext storage and privacy-first desig
 ---
 
 ## ✨ Features
@@ -80,60 +94,15 @@ The application is built on a modular Full-Stack MTV (Model-Template-View) desig
 
 User Input → Frontend (JS) → Flask API → Processing Modules (`breach_checker.py`, `password_checker.py`, `risk_model.py`) → Database Log → Output Render
 
-
-
 ---
 
 ## 🗺️ Architecture Diagram
 
-┌─────────────────────────────────────────────────────────────────────┐
-│                         CLIENT BROWSER                              │
-│                                                                     │
-│   ┌───────────────┐   ┌────────────────┐   ┌──────────────────┐     │
-│   │  HTML5/Jinja2 │   │ Vanilla JS ES6 │   │  CSS3 Glassmor-  │     │
-│   │  Templates    │   │  Fetch API /   │   │  phism + Neon UI │     │
-│   │               │   │  DOM Manip.    │   │                  │     │
-│   └──────┬────────┘   └───────┬────────┘   └──────────────────┘     │
-│          │                    │ JSON POST /api/scan                 │
-└──────────┼────────────────────┼─────────────────────────────────────┘
-           │                    │
-           ▼                    ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                        FLASK BACKEND                                │
-│                                                                     │
-│   ┌──────────────────────────────────────────────────────────────┐  │
-│   │                        app.py (Router)                       │  │
-│   │   /            /dashboard     /history     /api/scan (POST)  │  │
-│   └──────┬──────────────┬──────────────┬───────────────┬─────────┘  │
-│          │              │              │               │            │
-│          ▼              ▼              ▼               ▼            │
-│   ┌────────────┐ ┌─────────────┐ ┌─────────┐ ┌────────────────── ┐  │
-│   │ index.html │ │dashboard    │ │history  │ │  breach_checker   │  │
-│   │ (Landing)  │ │.html (Main) │ │.html    │ │  .py              │  |
-│   └────────────┘ └─────────────┘ └─────────┘ └──────── ┬─────────┘  │
-│                                                        │            │
-│   ┌──────────────────────────────────────────────────┐ │            │
-│   │                  utils/                          │ │            │
-│   │  ┌──────────────┐  ┌──────────────┐  ┌────────┐  │ │            │
-│   │  │password_     │  │ risk_model   │  │ db.py  │◄ ┘ │            │
-│   │  │checker.py    │  │ .py          │  │        │    │            │
-│   │  │(k-Anonymity) │  │(Score Engine)│  │(SQLite)│    │            │
-│   │  └──────┬───────┘  └──────┬───────┘  └───┬────┘    │            │
-│   └─────────┼─────────────────┼──────────────┼─────────┘            │
-│             │                 │              │                      │
-└─────────────┼─────────────────┼──────────────┼──────────────────────┘
-              │                 │              │
-              ▼                 │              ▼
-┌─────────────────────┐         │    ┌──────────────────────┐
-│  HIBP EXTERNAL API  │         │    │   SQLite Database    │
-│  api.pwnedpasswords │         │    │   securesight.db     │
-│  .com/range/{prefix}│         │    │   (search_history)   │
-└─────────────────────┘         │    └──────────────────────┘
-                                ▼
-                   ┌─────────────────────────┐
-                   │ data/mock_breaches.json │
-                   │ (Threat Intelligence DB)│
-                   └─────────────────────────┘
+<h2 align="center">System Architecture</h2>
+<p align="center">
+  <img src="./static/assets/architecture.png" width="100%" />
+</p>
+
 
 ## 🔌 API Documentation
 
@@ -249,7 +218,7 @@ Data security is the fundamental architectural pillar of this application.
    ```
    > The `securesight.db` architecture initializes instantly upon routing.
 
----
+http://127.0.0.1:5000
 
 ## 💻 Usage Instructions
 
@@ -272,7 +241,13 @@ Data security is the fundamental architectural pillar of this application.
 
 ## 🥇 What Makes This Project Unique
 
-Unlike standard password-strength checkers that use basic regular expressions, SecureSight unifies three independent evaluation environments (Local Exposure, Global Leaks, Contextual Weakness) into a single overarching **Rule-Based Analysis System**. You are not simply told "Password Bad." SecureSight analyzes precisely *why* you are compromised and returns mathematically targeted remediation paths.
+Unlike traditional tools, SecureSight combines:
+
+* Breach detection
+* Password analysis
+* Risk scoring
+
+into a single intelligent system that explains why a user is at risk and provides actionable solutions.
 
 ---
 
