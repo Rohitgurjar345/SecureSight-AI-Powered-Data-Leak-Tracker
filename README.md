@@ -46,16 +46,20 @@ SecureSight solves this by utilizing an **intelligent rule-based scoring system*
 ## 📸 Application Screenshots
 
 <p align="center">
-  <img src="./static/assets/home_page.png" width="30%" />
-  <img src="./static/assets/dashboard.png" width="30%" />
-  <img src="./static/assets/password-generator.png" width="30%" />
+  <figure style="display:inline-block; text-align:center; margin:10px;">
+    <img src="./static/assets/home_page.png" width="30%" />
+    <figcaption>Home Page</figcaption>
+  </figure>
+  <figure style="display:inline-block; text-align:center; margin:10px;">
+    <img src="./static/assets/dashboard.png" width="30%" />
+    <figcaption>Dashboard</figcaption>
+  </figure>
+  <figure style="display:inline-block; text-align:center; margin:10px;">
+    <img src="./static/assets/password-generator.png" width="30%" />
+    <figcaption>Generator</figcaption>
+  </figure>
 </p>
 
-<p align="center">
-  Home Page &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Dashboard &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Generator
-</p>
 ---
 
 ## ⚙️ How It Works
