@@ -46,7 +46,7 @@ SecureSight solves this by utilizing an **intelligent rule-based scoring system*
 ## 📸 Application Screenshots
 
 <p align="center">
-  <img src="./static/assets/home-page.png" width="30%" />
+  <img src="./static/assets/home_page.png" width="30%" />
   <img src="./static/assets/dashboard.png" width="30%" />
   <img src="./static/assets/password-generator.png" width="30%" />
 </p>
